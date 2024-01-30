@@ -1,7 +1,11 @@
 import pytest
+from selene import browser
 
 
 @pytest.fixture(scope="session")
-def browser():
-
+def set_browser():
+    browser.open('https://google.com')
+    browser.config.window_width = 1920
+    browser.config.window_height = 720
     yield
+    browser.quit()
